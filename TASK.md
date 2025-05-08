@@ -28,6 +28,8 @@ In this task, you, your teammate and your AI partners will build a collaborative
 
 - Human-edited README and `CLAUDE.md` with project overview and key commands.
 
+We will not be building in authentication or deployment in this project, so you don't have to plan for them.
+
 ## Success Criteria
 
 A successful project will:
