@@ -35,4 +35,4 @@ We will not be building in authentication or deployment in this project, so you 
 A successful project will:
 
 - Load tasks from the database and display them in the correct columns.
-- Allow users to add, move, and complete tasks through the UI.
+- Allow users to add, move, delete and complete tasks through the UI.
