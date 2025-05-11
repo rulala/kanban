@@ -12,6 +12,7 @@ A brief description of the project, its purpose, and key goals.
 
 ## Code Style & Conventions
 
+- Import standards
 - Code formatting guidelines
 - Naming conventions
 - Project-specific patterns to follow
@@ -71,7 +72,7 @@ Before submitting any code, ensure the following steps are completed:
    [check command]
    ```
 
-3. Review command outputs thoroughly and iterate until all issues are resolved
+3. Review outputs and iterate until all issues are resolved
 
 4. Verify that the code complies with all standards defined in this document:
 
@@ -91,10 +92,6 @@ Before submitting any code, ensure the following steps are completed:
 ## Known Issues & Workarounds
 
 Document any current limitations or workarounds Claude should be aware of.
-
-## Documentation Guidelines
-
-How documentation should be structured and where it should be placed.
 
 ## References
 
