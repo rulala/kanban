@@ -16,6 +16,9 @@ These are the prompts you can use to do so:
 
 ### GENERATE SPECS
 
+> [!NOTE]
+> Resist the urge of being too ambitious here, remember you must finish building this and fully understand, be able to explain it by the end of the day. This is _just_ a simple kanban board. The aim is simply to make sure it is built the way you want/dictate.
+
 ```markdown
 We're going to discuss the specification for a software project. I am working in team of 2 people, each pair-programming with an AI (we each have the workshop repo cloned to our machines, and each have an instance of Claude Code running inside that repo) in the context of an AI-assisted development workshop. The project details are contained in `TASK.md` and workshop details are in `README.md`.
 
