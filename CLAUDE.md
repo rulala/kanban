@@ -53,16 +53,19 @@ A brief description of the project, its purpose, and key goals.
 
 ```bash
 # Build command
-[build command]
+[command]
 
 # Test command
-[test command]
+[command]
 
 # Lint command
-[lint command]
+[command]
+
+# Check command
+[command]
 
 # Development server
-[dev server command]
+[command]
 ```
 
 ## Project Structure
@@ -75,23 +78,13 @@ Key directories and their purpose:
 
 ## Review Process Guidelines
 
-ALWAYS follow these steps when reviewing code:
+Before submitting any code, ensure the following steps are completed:
 
-1. **Check CLAUDE.md standards first**:
+1. **Run all lint, check and test commands**
 
-   ```bash
-   [lint command]
-   ```
+2. **Review outputs and iterate until all issues are resolved**
 
-2. **Run all checks**:
-
-   ```bash
-   [check command]
-   ```
-
-3. **Review outputs and iterate until all issues are resolved**
-
-4. **Assess compliance**:
+3. **Assess compliance**:
    For each standard, explicitly state ✅ or ❌ and explain why:
 
    - Code style and formatting
@@ -101,7 +94,7 @@ ALWAYS follow these steps when reviewing code:
    - Test coverage
    - Documentation
 
-5. **Self-review checklist**:
+4. **Self-review checklist**:
    - [ ] Code follows defined patterns
    - [ ] No debug/commented code
    - [ ] Error handling implemented
