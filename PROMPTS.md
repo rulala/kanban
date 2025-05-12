@@ -44,6 +44,9 @@ Make each specification modular and cross-referenced so developers can quickly f
 
 ### GENERATE TICKETS
 
+> [!IMPORTANT]  
+> This prompt contains variables `DEV1_NAME` and `DEV2_NAME` to be filled in.
+
 ```markdown
 Review `CLAUDE.md` first to understand our standards. Then review `FUNCTIONAL.md` and `ARCHITECTURE.md` to understand what we're building.
 
@@ -78,8 +81,11 @@ During implementation, there are a number of prompts you can use at the start of
 
 ### KICKOFF / REFRESH MEMORY
 
+> [!IMPORTANT]  
+> This prompt contains variables `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+
 > [!NOTE]
-> Always clear context window before using this prompt. Remove the sentence asking to check `HISTORY_[NAME].md` on kickoff as this will be the first code interaction.
+> Always clear context window before using this prompt.
 
 ```markdown
 **First, review `CLAUDE.md` to understand our project standards and workflow.**
@@ -105,11 +111,14 @@ Now, [PROMPT]
 
 ### DEPENDENCY CHECK
 
+> [!IMPORTANT]  
+> This prompt contains variable `TICKET_NUMBER` to be filled in.
+
 > [!NOTE]
 > Use this prompt if ticket dependencies or scope is unclear or overlapping.
 
 ```markdown
-Before starting this ticket, check `TICKETS.md` for dependencies. Then:
+Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies. Then:
 
 1. Verify all prerequisite tickets are complete
 2. Confirm our implementation aligns with dependent tickets
