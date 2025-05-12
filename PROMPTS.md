@@ -1,9 +1,9 @@
 # Prompts for Claude
 
 > [!IMPORTANT]  
-> There are plenty of variables throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in PROMPTS.md - fill variables with TICKET_NUMBER=2, NAME='Max' and PROMPT='Create data.json'"
+> There are plenty of variables throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill variables with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
 
-## CONCEPTION
+## Conception
 
 The first step is to develop your own set of specifications, requirements and standards for this project. To do this you will converse as a team with Claude and produce 4 structured outputs:
 
@@ -54,7 +54,7 @@ Break the project down into manageable, atomic tickets that:
 - Minimise overlap for simultaneous development
 - Are small enough to complete in one session
 
-Generate TICKETS.md with:
+Generate `TICKETS.md` with:
 
 1. Clear dependencies between tickets
 2. Frontend tickets assigned to [DEV1_NAME]
@@ -72,7 +72,7 @@ Each ticket should include:
 **Important**: Order tickets by dependency, ensuring both developers can work efficiently and logically through the tickets in order, without blocking each other.
 ```
 
-## IMPLEMENTATION
+## Implementation
 
 During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), after each ticket (CONTEXT RESET) and at specific times during the day (PROGRESS SYNC). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
 
@@ -154,7 +154,7 @@ After creating/updating these files, I'll reset the context window and we'll con
 > At 3 points during the day, there will be an allocated project sync time, when you can discuss your progress with your team member. To do so, finish what you are doing and send this prompt to get some talking points, your teammate will do the same:
 
 ```markdown
-We're pausing implementation to sync with team. Please:
+We're pausing implementation to sync with team. You will:
 
 1. Summarise what we've completed in this session
 2. Note any important architectural decisions made
