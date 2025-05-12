@@ -1,3 +1,5 @@
+**IMPORTANT FOR CLAUDE: Reference this file before implementing anything**
+
 # Project: [Project Name]
 
 ## Project Overview
@@ -12,10 +14,22 @@ A brief description of the project, its purpose, and key goals.
 
 ## Code Style & Conventions
 
-- Import standards
-- Code formatting guidelines
-- Naming conventions
-- Project-specific patterns to follow
+### Import/Module Standards
+
+- [Specify import standards]
+
+### Naming Conventions
+
+- [Functions naming convention]
+- [Classes/Components naming convention]
+- [Constants naming convention]
+- [Files naming convention]
+
+### Patterns to Follow
+
+- [Key architectural patterns]
+- [Error handling approaches]
+- [Code organisation principles]
 
 ## Development Workflow
 
@@ -39,13 +53,16 @@ A brief description of the project, its purpose, and key goals.
 
 ```bash
 # Build command
-[command]
+[build command]
 
 # Test command
-[command]
+[test command]
 
 # Lint command
-[command]
+[lint command]
+
+# Development server
+[dev server command]
 ```
 
 ## Project Structure
