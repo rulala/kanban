@@ -58,36 +58,38 @@ Key directories and their purpose:
 
 ## Review Process Guidelines
 
-Before submitting any code, ensure the following steps are completed:
+ALWAYS follow these steps when reviewing code:
 
-1. Run all lint commands to ensure code style compliance:
+1. **Check CLAUDE.md standards first**:
 
    ```bash
    [lint command]
    ```
 
-2. Run check commands to validate code quality:
+2. **Run all checks**:
 
    ```bash
    [check command]
    ```
 
-3. Review outputs and iterate until all issues are resolved
+3. **Review outputs and iterate until all issues are resolved**
 
-4. Verify that the code complies with all standards defined in this document:
+4. **Assess compliance**:
+   For each standard, explicitly state ✅ or ❌ and explain why:
 
-   - Code style and formatting standards
+   - Code style and formatting
    - Naming conventions
-   - Project-specific patterns
-   - Test coverage requirements
-   - Documentation requirements
+   - Architecture patterns (refer to `ARCHITECTURE.md`)
+   - Error handling
+   - Test coverage
+   - Documentation
 
-5. Self-review checklist:
-   - [ ] Code follows the defined structure and patterns
-   - [ ] No debug code or commented-out code remains
-   - [ ] Error handling is implemented appropriately
-   - [ ] Tests are written and passing
-   - [ ] Documentation is updated
+5. **Self-review checklist**:
+   - [ ] Code follows defined patterns
+   - [ ] No debug/commented code
+   - [ ] Error handling implemented
+   - [ ] Tests written and passing
+   - [ ] Documentation updated
 
 ## Known Issues & Workarounds
 
