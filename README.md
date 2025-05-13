@@ -44,42 +44,7 @@ One developer on your team should create a new repository [using this repository
 
 ## Task
 
-### Overview
-
-In this task, you, your teammate and your AI partners will build a collaborative Kanban board application. The goal is to create a local web app where users can manage tasks by adding, updating, and moving them between columns: "To Do", "Doing", and "Done".
-
-### Core Features
-
-1. **Static Board UI**:
-
-- Three columns ("To Do", "Doing", "Done").
-- UI components for board layout and task cards.
-
-2. **Live Data Integration**:
-
-- Use a database to store tasks.
-- API endpoints for getting and updating tasks.
-- UI updates dynamically from the database.
-
-3. **Task Management**:
-
-- Add new tasks via a form.
-- Update task status (move between columns).
-- Delete tasks.
-- Data persistence in the database.
-
-4. **Documentation**:
-
-- Human-edited README and `CLAUDE.md` with project overview and key commands.
-
-We will not be building in authentication or deployment in this project, so you don't have to plan for them.
-
-### Success Criteria
-
-A successful project will:
-
-- Load tasks from the database and display them in the correct columns.
-- Allow users to add, move, delete and complete tasks through the UI.
+Details of the task are contained in the [brief](BRIEF.md).
 
 ## Human-AI Pair-Programming: A Rough Guide
 
@@ -97,6 +62,9 @@ Follow these four steps consistently throughout the workshop:
 
 ### Workshop Phases
 
+> [!NOTE]
+> All prompts referred to in the below section are available [here](PROMPTS.md).
+
 #### CONCEPTION
 
 - **Pair Formation**: Form teams (1 frontend + 1 backend developer)
@@ -104,8 +72,8 @@ Follow these four steps consistently throughout the workshop:
 - **Specification Development**:
   - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase.
   * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the GENERATE SPECS prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
-  * Create `FUNCTIONAL.md`, `ARCHITECTURE.md`, `CLAUDE.md`
-  * Use SPEC WRAP-UP prompt
+  * Use SPEC WRAP-UP prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files.
+  * Push everything to your repo.
 
 > **Output**: Initial documentation pushed to repo
 
@@ -114,6 +82,10 @@ Follow these four steps consistently throughout the workshop:
 - **Parallel Setup**:
   - **Frontend Dev**: Use the GENERATE TICKETS prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
   - **Backend Dev**: Set up environment, frameworks, folder structure, install libraries
+
+> [!WARNING]  
+> Set up your environment, install your libraries etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+
 - **Coordination**: Review tickets for dependencies and overlaps
 
 > **Output**: Ready-to-code environment with structured tickets
