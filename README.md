@@ -104,8 +104,8 @@ Follow these four steps consistently throughout the workshop:
 - **Specification Development**:
   - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase.
   * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the GENERATE SPECS prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
-  * Create `FUNCTIONAL.md`, `ARCHITECTURE.md`, `CLAUDE.md`
-  * Use SPEC WRAP-UP prompt
+  * Use SPEC WRAP-UP prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files.
+  * Push everything to your repo.
 
 > **Output**: Initial documentation pushed to repo
 
@@ -114,6 +114,10 @@ Follow these four steps consistently throughout the workshop:
 - **Parallel Setup**:
   - **Frontend Dev**: Use the GENERATE TICKETS prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
   - **Backend Dev**: Set up environment, frameworks, folder structure, install libraries
+
+> [!WARNING]  
+> Set up your environment, install your libraries etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+
 - **Coordination**: Review tickets for dependencies and overlaps
 
 > **Output**: Ready-to-code environment with structured tickets
