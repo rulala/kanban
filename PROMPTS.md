@@ -20,11 +20,11 @@ These are the prompts you can use to do so:
 > Resist the urge of being too ambitious here, remember you must finish building this and fully understand, be able to explain it by the end of the day. This is _just_ a simple kanban board. The aim is simply to make sure it is built the way you want/dictate.
 
 ```markdown
-We're going to discuss the specification for a software project. I am working in team of 2 people, each pair-programming with an AI (we each have the workshop repo cloned to our machines, and each have an instance of Claude Code running inside that repo) in the context of an AI-assisted development workshop. The project details are contained in `TASK.md` and workshop details are in `README.md`.
+We're going to discuss the specification for a software project. I am working in team of 2 people, each pair-programming with an AI (we each have the workshop repo cloned to our machines, and each have an instance of Claude Code running inside that repo) in the context of an AI-assisted development workshop. The project details are contained in `BRIEF.md` and workshop details are in `README.md`.
 
 Ask me one question at a time so we can develop thorough, step-by-step specs. Each question should build on my previous answers, and our end goal is to have a detailed specification I can hand off to a developer. This will be built in only a few hours so try and keep the conversation short, apply KISS principles and use logical inference based on previous answers when possible.
 
-We should cover: frameworks, libraries, package managers, styling choices, data structure options (SQL/NoSQL/Graph) BEFORE data storage, architecture, project structure, components, interfaces, design patterns, error handling, UI features, user experience, coding standards, naming conventions, agreed principles, version control, commit standards, testing and documentation requirements.
+We should cover: language (ask this first), frameworks, libraries, package managers, styling choices, data structure options (SQL/NoSQL/Graph) BEFORE data storage, architecture, project structure, components, interfaces, design patterns, error handling, UI features, user experience, coding standards, naming conventions, agreed principles, version control, commit standards, testing and documentation requirements.
 
 Do not wrap up until you have answers from me for each of these topics. There will be three outputs at the end: a functional spec, an architectural spec, and our code standards specification for `CLAUDE.md`, review the template for this file currently in the repo to understand what we must cover.
 
