@@ -133,19 +133,10 @@ Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies
 Only proceed when dependencies are satisfied and coordination is clear.
 ```
 
-### REVIEW
-
-> [!NOTE]
-> Use this prompt after each 'piece' of implementation to ensure code consistency and catch errors early.
-
-```markdown
-Review `CLAUDE.md` first, then follow the review process guidelines within. Run the specified checks and assess code compliance against our standards, explaining your findings for each.
-```
-
 ### CONTEXT RESET
 
 > [!NOTE]
-> You must use this prompt after each ticket.
+> You must use this prompt after each ticket. Review and refine AI outputs.
 
 ```markdown
 Now we will reset the context window, before we do so:
