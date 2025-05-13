@@ -1,5 +1,28 @@
 # Agentic Workflows & Human–AI Pair Programming in Real Development
 
+## Table of Contents
+- [Workshop](#workshop)
+  - [Overview](#overview)
+  - [What to Expect](#what-to-expect)
+  - [Getting Started](#getting-started)
+- [Task](#task)
+  - [Overview](#overview-1)
+  - [Core Features](#core-features)
+  - [Success Criteria](#success-criteria)
+- [Human-AI Pair-Programming: A Rough Guide](#human-ai-pair-programming-a-rough-guide)
+  - [IQRE Process](#iqre-process)
+  - [Workshop Phases](#workshop-phases)
+    - [Conception](#conception)
+    - [Environment & Tickets](#environment--tickets)
+    - [Implementation](#implementation)
+    - [Context Management](#context-management)
+    - [Presentation](#presentation)
+  - [Key Guidelines](#key-guidelines)
+    - [AI Collaboration](#ai-collaboration)
+    - [Team Coordination](#team-coordination)
+    - [Quality Assurance](#quality-assurance)
+    - [Success Criteria](#success-criteria-1)
+
 ## Workshop
 
 ### Overview
