@@ -1,7 +1,7 @@
 # Prompts for Claude
 
 > [!IMPORTANT]  
-> There are plenty of variables throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill variables with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
+> There are plenty of placeholders throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill placeholders with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
 
 ## Conception
 
@@ -13,6 +13,8 @@ The first step is to develop your own set of specifications, requirements and st
 4. **TICKETS.md** - Ordered tasks/features to complete the project collaboratively
 
 These are the prompts you can use to do so:
+
+---
 
 ### GENERATE SPECS
 
@@ -48,7 +50,7 @@ Make each specification modular and cross-referenced so developers can quickly f
 ### GENERATE TICKETS
 
 > [!IMPORTANT]  
-> This prompt contains variables `DEV1_NAME` and `DEV2_NAME` to be filled in.
+> This prompt contains placeholders `DEV1_NAME` and `DEV2_NAME` to be filled in.
 
 ```markdown
 Review `CLAUDE.md` first to understand our standards. Then review `FUNCTIONAL.md` and `ARCHITECTURE.md` to understand what we're building.
@@ -80,12 +82,12 @@ Each ticket should include:
 
 ## Implementation
 
-During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), after each ticket (CONTEXT RESET) and at specific times during the day (PROGRESS SYNC). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
+During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), or after each ticket (CONTEXT RESET). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
 
 ### KICKOFF / REFRESH MEMORY
 
 > [!IMPORTANT]  
-> This prompt contains variables `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+> This prompt contains placeholders `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
 
 > [!NOTE]
 > Always clear context window before using this prompt.

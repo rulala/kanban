@@ -40,7 +40,7 @@ You will:
 
 ### Getting Started
 
-Make sure your development environment is set up as outlined in the pre-work materials. Use Claude Code to assist with planning, coding, testing, and documentation.
+One developer on your team should create a new repository [using this repository as a template](https://github.com/new?template_name=fac-ws_ai_pair-programming&template_owner=TandemCreativeDev). After this, add your other team member [as a collaborator](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository) for that repo.
 
 ## Task
 
@@ -97,27 +97,28 @@ Follow these four steps consistently throughout the workshop:
 
 ### Workshop Phases
 
-#### Conception
+#### CONCEPTION
 
 - **Pair Formation**: Form teams (1 frontend + 1 backend developer)
-- **Repository Setup**: Fork and clone workshop repository
+- **Repository Setup**: Following [Getting Started](#getting-started)
 - **Specification Development**:
-  - Use GENERATE SPECS prompt collaboratively
-  - Create `FUNCTIONAL.md`, `ARCHITECTURE.md`, `CLAUDE.md`
-  - Use SPEC WRAP-UP prompt
+  - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase.
+  * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the GENERATE SPECS prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
+  * Create `FUNCTIONAL.md`, `ARCHITECTURE.md`, `CLAUDE.md`
+  * Use SPEC WRAP-UP prompt
 
 > **Output**: Initial documentation pushed to repo
 
-#### Environment & Tickets
+#### ENVIRONMENT & TICKETS
 
 - **Parallel Setup**:
-  - **Frontend Dev**: Use GENERATE TICKETS prompt to create `TICKETS.md`
+  - **Frontend Dev**: Use the GENERATE TICKETS prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
   - **Backend Dev**: Set up environment, frameworks, folder structure, install libraries
 - **Coordination**: Review tickets for dependencies and overlaps
 
 > **Output**: Ready-to-code environment with structured tickets
 
-#### Implementation
+#### IMPLEMENTATION
 
 Work on individual machines with separate Claude Code instances.
 
@@ -130,13 +131,12 @@ Work on individual machines with separate Claude Code instances.
 
 **Between Sessions**:
 
-- Use PROGRESS SYNC prompt
 - Coordinate dependencies with teammate
 - Update `CLAUDE.md` with learned standards
 
 > **Output**: Incremental feature completion with documented PRs
 
-#### Context Management
+#### CONTEXT MANAGEMENT
 
 - Use `HISTORY\_[NAME].md` for context summaries
 - Reset Claude's context window after each ticket
@@ -144,7 +144,7 @@ Work on individual machines with separate Claude Code instances.
 
 > **Output**: Archived context for reference, clean workspace
 
-#### Presentation
+#### PRESENTATION
 
 - Demo Kanban board
 - Show AI collaboration examples
