@@ -159,20 +159,3 @@ Now we will reset the context window, before we do so:
 
 After creating/updating these files, I'll reset the context window and we'll continue with a fresh session.
 ```
-
-### PROGRESS SYNC
-
-> [!NOTE]
-> At 3 points during the day, there will be an allocated project sync time, when you can discuss your progress with your team member. To do so, finish what you are doing and send this prompt to get some talking points, your teammate will do the same:
-
-```markdown
-We're pausing implementation to sync with team. You will:
-
-1. Summarise what we've completed in this session
-2. Note any important architectural decisions made
-3. Identify any changes that affect other team members
-4. Highlight any blocks or questions for team discussion
-5. Suggest next logical steps for our pairing
-
-This helps maintain team coherence while each pair works independently.
-```
