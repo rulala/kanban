@@ -81,10 +81,10 @@ Follow these four steps consistently throughout the workshop:
 
 - **Parallel Setup**:
   - **Frontend Dev**: Use the GENERATE TICKETS prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
-  - **Backend Dev**: Set up environment, frameworks, folder structure, install libraries
+  - **Backend Dev**: Set up environment, frameworks, folder structure, install dependencies
 
 > [!WARNING]  
-> Set up your environment, install your libraries etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+> Set up your environment, install your dependencies etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
 
 - **Coordination**: Review tickets for dependencies and overlaps
 
