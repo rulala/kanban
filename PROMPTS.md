@@ -14,6 +14,8 @@ The first step is to develop your own set of specifications, requirements and st
 
 These are the prompts you can use to do so:
 
+---
+
 ### GENERATE SPECS
 
 > [!NOTE]
