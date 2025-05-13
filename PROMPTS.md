@@ -111,7 +111,7 @@ As you implement, explain:
 - How it aligns with our `ARCHITECTURE.md`
 - Why it complies with our standards in `CLAUDE.md`
 
-Now, [PROMPT]
+Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
 ```
 
 ### DEPENDENCY CHECK
