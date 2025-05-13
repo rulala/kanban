@@ -1,7 +1,7 @@
 # Prompts for Claude
 
 > [!IMPORTANT]  
-> There are plenty of variables throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill variables with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
+> There are plenty of placeholders throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill placeholders with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
 
 ## Conception
 
@@ -48,7 +48,7 @@ Make each specification modular and cross-referenced so developers can quickly f
 ### GENERATE TICKETS
 
 > [!IMPORTANT]  
-> This prompt contains variables `DEV1_NAME` and `DEV2_NAME` to be filled in.
+> This prompt contains placeholders `DEV1_NAME` and `DEV2_NAME` to be filled in.
 
 ```markdown
 Review `CLAUDE.md` first to understand our standards. Then review `FUNCTIONAL.md` and `ARCHITECTURE.md` to understand what we're building.
@@ -85,7 +85,7 @@ During implementation, there are a number of prompts you can use at the start of
 ### KICKOFF / REFRESH MEMORY
 
 > [!IMPORTANT]  
-> This prompt contains variables `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+> This prompt contains placeholders `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
 
 > [!NOTE]
 > Always clear context window before using this prompt.
