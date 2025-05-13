@@ -56,7 +56,7 @@ Work on individual machines with separate Claude Code instances.
 
 ### Context Management
 
-- Use HISTORY\_[NAME].md for context summaries
+- Use `HISTORY\_[NAME].md` for context summaries
 - Reset Claude's context window after each ticket
 - Maintain clean workspace
 
