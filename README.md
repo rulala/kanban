@@ -1,6 +1,7 @@
 # Agentic Workflows & Human–AI Pair Programming in Real Development
 
 ## Table of Contents
+
 - [Workshop](#workshop)
   - [Overview](#overview)
   - [What to Expect](#what-to-expect)
@@ -94,6 +95,8 @@ Follow these four steps consistently throughout the workshop:
 4. **Review/Create**: Understand generated code/specs. If inspired, create a new, enhanced solution based on AI's output.
 5. **Explain**: Present outputs to teammates, emphasising clear foundations and alignment.
 
+---
+
 ### Workshop Phases
 
 #### Conception
@@ -105,7 +108,7 @@ Follow these four steps consistently throughout the workshop:
   - Create `FUNCTIONAL.md`, `ARCHITECTURE.md`, `CLAUDE.md`
   - Use SPEC WRAP-UP prompt
 
-**Output**: Initial documentation pushed to repo
+> **Output**: Initial documentation pushed to repo
 
 #### Environment & Tickets
 
@@ -114,7 +117,7 @@ Follow these four steps consistently throughout the workshop:
   - **Backend Dev**: Set up environment, frameworks, folder structure, install libraries
 - **Coordination**: Review tickets for dependencies and overlaps
 
-**Output**: Ready-to-code environment with structured tickets
+> **Output**: Ready-to-code environment with structured tickets
 
 #### Implementation
 
@@ -133,7 +136,7 @@ Work on individual machines with separate Claude Code instances.
 - Coordinate dependencies with teammate
 - Update `CLAUDE.md` with learned standards
 
-**Output**: Incremental feature completion with documented PRs
+> **Output**: Incremental feature completion with documented PRs
 
 #### Context Management
 
@@ -141,7 +144,7 @@ Work on individual machines with separate Claude Code instances.
 - Reset Claude's context window after each ticket
 - Maintain clean workspace
 
-**Output**: Archived context for reference, clean workspace
+> **Output**: Archived context for reference, clean workspace
 
 #### Presentation
 
@@ -150,7 +153,9 @@ Work on individual machines with separate Claude Code instances.
 - Present evolved standards
 - Reflect on deliberate architectural decisions
 
-**Output**: 5-minute presentation with examples and demo
+> **Output**: 5-minute presentation with examples and demo
+
+---
 
 ### Key Guidelines
 
