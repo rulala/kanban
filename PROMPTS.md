@@ -87,7 +87,7 @@ During implementation, there are a number of prompts you can use at the start of
 ### KICKOFF / REFRESH MEMORY
 
 > [!IMPORTANT]  
-> This prompt contains placeholders `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+> This prompt contains placeholders `NAME`, and `TICKET_NUMBER` to be filled in. At the end of the below text, you should add your instructions to the LLM to complete the prompt (this can often be taken from the ticket you are working on). Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
 
 > [!NOTE]
 > Always clear context window before using this prompt.
