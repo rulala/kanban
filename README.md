@@ -84,7 +84,7 @@ Follow these four steps consistently throughout the workshop:
   - **Backend Dev**: Set up environment, frameworks, folder structure, install dependencies
 
 > [!WARNING]  
-> Set up your environment, install your dependencies etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+> Set up your environment, install your dependencies etc. **manually**. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
 
 - **Coordination**: Review tickets for dependencies and overlaps
 
