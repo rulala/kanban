@@ -80,7 +80,7 @@ Each ticket should include:
 
 ## Implementation
 
-During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), after each ticket (CONTEXT RESET) and at specific times during the day (PROGRESS SYNC). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
+During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), or after each ticket (CONTEXT RESET). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
 
 ### KICKOFF / REFRESH MEMORY
 
