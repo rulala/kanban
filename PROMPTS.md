@@ -82,7 +82,7 @@ Each ticket should include:
 
 ## Implementation
 
-During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY), after each implementation (REVIEW), or after each ticket (CONTEXT RESET). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
+During implementation, there are a number of prompts you can use at the start of each ticket (KICKOFF / REFRESH MEMORY) or after each ticket (CONTEXT RESET). Included is also a DEPENDENCY CHECK prompt to be used if anything is unclear, remember to also check in with your teammate regularly to iron out anything that is unclear or overlapping.
 
 ### KICKOFF / REFRESH MEMORY
 
@@ -131,15 +131,6 @@ Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies
 4. Flag any potential conflicts with work in progress
 
 Only proceed when dependencies are satisfied and coordination is clear.
-```
-
-### REVIEW
-
-> [!NOTE]
-> Use this prompt after each 'piece' of implementation to ensure code consistency and catch errors early.
-
-```markdown
-Review `CLAUDE.md` first, then follow the review process guidelines within. Run the specified checks and assess code compliance against our standards, explaining your findings for each.
 ```
 
 ### CONTEXT RESET

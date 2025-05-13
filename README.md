@@ -98,7 +98,7 @@ Work on individual machines with separate Claude Code instances.
 
 1. Use KICKOFF/REFRESH MEMORY prompt
 2. Implement features
-3. Use REVIEW prompt after each piece
+3. Make sure to review constantly
 4. Use CONTEXT RESET after ticket completion
 
 **Between Sessions**:
@@ -144,7 +144,7 @@ Work on individual machines with separate Claude Code instances.
 #### Quality Assurance
 
 - **Follow IQRE**: Apply the four steps consistently
-- **Review Obsessively**: Use REVIEW prompt religiously
+- **Review Obsessively**: You need to know everything the AI is generating
 - **Maintain Standards**: Keep `CLAUDE.md` current and concise
 
 #### Success Criteria
