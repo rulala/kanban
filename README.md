@@ -38,8 +38,6 @@ You will:
 - Develop a Kanban board application as a team.
 - Practice prompt refinement and iterative AI guidance.
 
-The task details are available in [TASK.md](TASK.md).
-
 ### Getting Started
 
 Make sure your development environment is set up as outlined in the pre-work materials. Use Claude Code to assist with planning, coding, testing, and documentation.
