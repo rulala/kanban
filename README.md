@@ -25,7 +25,7 @@
 
 ### Overview
 
-In this workshop, you'll work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
+In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
 
 ### What to Expect
 
