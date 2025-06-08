@@ -87,7 +87,7 @@ During implementation, there are a number of prompts you can use at the start of
 ### KICKOFF / REFRESH MEMORY
 
 > [!IMPORTANT]  
-> This prompt contains placeholders `NAME`, `TICKET_NUMBER` and `PROMPT` to be filled in. Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+> This prompt contains placeholders `NAME`, and `TICKET_NUMBER` to be filled in. At the end of the below text, you should add your instructions to the LLM to complete the prompt (this can often be taken from the ticket you are working on). Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
 
 > [!NOTE]
 > Always clear context window before using this prompt.
@@ -95,7 +95,7 @@ During implementation, there are a number of prompts you can use at the start of
 ```markdown
 **First, review `CLAUDE.md` to understand our project standards and workflow.**
 
-Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE_PLAN.md` and `FUNCTIONAL_PLAN.md` to understand what we are building.
+Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building.
 
 We are working through `TICKETS.md` and are on ticket [TICKET_NUMBER] (I'm [NAME]).
 
@@ -111,7 +111,7 @@ As you implement, explain:
 - How it aligns with our `ARCHITECTURE.md`
 - Why it complies with our standards in `CLAUDE.md`
 
-Now, [PROMPT]
+Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
 ```
 
 ### DEPENDENCY CHECK

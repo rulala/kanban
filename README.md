@@ -7,9 +7,6 @@
   - [What to Expect](#what-to-expect)
   - [Getting Started](#getting-started)
 - [Task](#task)
-  - [Overview](#overview-1)
-  - [Core Features](#core-features)
-  - [Success Criteria](#success-criteria)
 - [Human-AI Pair-Programming: A Rough Guide](#human-ai-pair-programming-a-rough-guide)
   - [IQRE Process](#iqre-process)
   - [Workshop Phases](#workshop-phases)
@@ -28,7 +25,7 @@
 
 ### Overview
 
-In this workshop, you'll work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
+In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
 
 ### What to Expect
 
@@ -71,20 +68,21 @@ Follow these four steps consistently throughout the workshop:
 - **Repository Setup**: Following [Getting Started](#getting-started)
 - **Specification Development**:
   - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase.
-  * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the GENERATE SPECS prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
-  * Use SPEC WRAP-UP prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files.
+  * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the [GENERATE SPECS](PROMPTS.md#generate-specs) prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
+  * Use [SPEC WRAP-UP](PROMPTS.md#spec-wrap-up) prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files.
   * Push everything to your repo.
 
 > **Output**: Initial documentation pushed to repo
 
 #### ENVIRONMENT & TICKETS
 
-- **Parallel Setup**:
-  - **Frontend Dev**: Use the GENERATE TICKETS prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
-  - **Backend Dev**: Set up environment, frameworks, folder structure, install dependencies
-
 > [!WARNING]  
-> Set up your environment, install your dependencies etc. MANUALLY. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+> Set up your environment, install your dependencies etc. **manually**. AI can be terrible at this and using AI for setup could add a lot of config issues to your project before you can even get started.
+
+- **Parallel Setup (now working on separate machines, using normal Git practices e.g. working on different branches)**:
+
+  - **Frontend Dev**: Use the [GENERATE TICKETS](PROMPTS.md#generate-tickets) prompt to create `TICKETS.md`. Remember to follow the IQRE methodology! Check that your tickets actually make sense so that you don't end up with a lot of vague, impossibly scoped tickets that no one could follow!
+  - **Backend Dev**: Set up environment, frameworks, folder structure, install dependencies
 
 - **Coordination**: Review tickets for dependencies and overlaps
 
@@ -96,10 +94,10 @@ Work on individual machines with separate Claude Code instances.
 
 **Per Ticket Process**:
 
-1. Use KICKOFF/REFRESH MEMORY prompt
+1. Use [KICKOFF/REFRESH MEMORY](PROMPTS.md#kickoff--refresh-memory) prompt
 2. Implement features
 3. Make sure to review constantly
-4. Use CONTEXT RESET after ticket completion
+4. Use [CONTEXT RESET](PROMPTS.md#context-reset) after ticket completion
 
 **Between Sessions**:
 
@@ -132,13 +130,13 @@ Work on individual machines with separate Claude Code instances.
 #### AI Collaboration
 
 - **Explicit Prompting**: Always tell Claude which files to reference (it won't do this automatically)
-- **Context Management**: Use CONTEXT RESET prompt to maintain clarity
+- **Context Management**: Use [CONTEXT RESET](PROMPTS.md#context-reset) prompt to maintain clarity
 - **Standards Evolution**: Update `CLAUDE.md` when discovering new patterns
 
 #### Team Coordination
 
 - **Sync Regularly**: During designated progress sessions
-- **Check Dependencies**: Use DEPENDENCY CHECK prompt when unclear
+- **Check Dependencies**: Use [DEPENDENCY CHECK](PROMPTS.md#dependency-check) prompt when unclear
 - **Share Learnings**: Document architectural decisions and standard updates
 
 #### Quality Assurance
