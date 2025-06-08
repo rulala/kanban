@@ -1,7 +1,7 @@
 # Prompts for Claude
 
 > [!IMPORTANT]  
-> There are plenty of placeholders throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill placeholders with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
+> There are plenty of placeholders throughout these prompts which need to be filled before use.
 
 ## Conception
 
