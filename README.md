@@ -115,17 +115,19 @@ Work on individual machines with separate Claude Code instances.
 2. Implement features following IQRE methodology
 3. Review constantly - understand every line AI generates
 4. Use [CONTEXT RESET](PROMPTS.md#context-reset) after ticket completion
+5. Update `TICKETS.md` with completion status and any additional work done
 
 **🎯 MILESTONE 3: Mid-Implementation Review** (15 minutes)
 
 - Teams demo their current progress and working features
+- Review updated `TICKETS.md` to show progress and cross-dependencies resolved
 - Show examples of effective AI collaboration (prompts, iterations, code review)
 - Group code review: examine specific implementations and discuss alternatives
 - Share challenges and solutions discovered so far
 
 **Between Sessions**:
 
-- Coordinate dependencies with teammate
+- Coordinate dependencies with teammate using updated `TICKETS.md`
 - Update `CLAUDE.md` with learned standards
 
 > **Output**: Incremental feature completion with documented progress
@@ -134,10 +136,11 @@ Work on individual machines with separate Claude Code instances.
 
 - Use `HISTORY\_[NAME].md` for context summaries
 - Reset Claude's context window after each ticket
+- Update `TICKETS.md` as living document after each completion
 - Maintain clean workspace
 - Document evolved best practices
 
-> **Output**: Archived context for reference, clean workspace
+> **Output**: Archived context for reference, updated ticket status, clean workspace
 
 #### FINAL PRESENTATION
 
@@ -198,7 +201,6 @@ Work on individual machines with separate Claude Code instances.
 - **Challenge Decisions**: "Why did you choose this pattern over X?"
 - **Test Edge Cases**: AI often misses boundary conditions
 - **Verify Against Requirements**: Does this actually solve the ticket?
-- **More details** in [AI Code Review Guide](FYI.md)
 
 #### Team Collaboration
 
@@ -212,6 +214,7 @@ Work on individual machines with separate Claude Code instances.
 - **Small Chunks**: One ticket per context window works best
 - **Clean Handoffs**: Use CONTEXT RESET religiously
 - **State Preservation**: `HISTORY_[NAME].md` is your lifeline
+- **Live Documentation**: Keep `TICKETS.md` updated after each completion
 - **Standards Evolution**: Update `CLAUDE.md` as you learn
 
 **Remember**: You're the human-in-the-loop. Guide the AI, don't just accept its output. Question everything, understand everything, own everything.
