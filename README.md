@@ -26,7 +26,7 @@
 
 ### Overview
 
-In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
+In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code or Codex as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
 
 **Key Feature**: Regular milestone presentations where teams share progress, code, and learnings with the entire group for collaborative review and feedback.
 
@@ -73,7 +73,7 @@ Follow these four steps consistently throughout the workshop:
 - **Repository Setup**: Following [Getting Started](#getting-started)
 - **Specification Development**:
   - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase
-  - Sitting on the same computer, you should initialise a new instance of Claude Code. Use the [GENERATE SPECS](PROMPTS.md#generate-specs) prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
+  - Sitting on the same computer, you should initialise a new instance of Claude Code or Codex. Use the [GENERATE SPECS](PROMPTS.md#generate-specs) prompt to have a conversation with AI and determine the specifications of your project. You should be discussing each answer with each other before responding. This is a collaborative effort!
   - Use [SPEC WRAP-UP](PROMPTS.md#spec-wrap-up) prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files
   - Push everything to your repo
 
@@ -107,7 +107,7 @@ Follow these four steps consistently throughout the workshop:
 
 #### IMPLEMENTATION
 
-Work on individual machines with separate Claude Code instances.
+Work on individual machines with separate Claude Code or Codex instances.
 
 **Per Ticket Process**:
 
@@ -135,7 +135,7 @@ Work on individual machines with separate Claude Code instances.
 #### CONTEXT MANAGEMENT
 
 - Use `HISTORY\_[NAME].md` for context summaries
-- Reset Claude's context window after each ticket
+- Reset the LLM's context window after each ticket
 - Update `TICKETS.md` as living document after each completion
 - Maintain clean workspace
 - Document evolved best practices
@@ -159,7 +159,7 @@ Work on individual machines with separate Claude Code instances.
 
 #### AI Collaboration
 
-- **Explicit Prompting**: Always tell Claude which files to reference (it won't do this automatically)
+- **Explicit Prompting**: Always tell the LLM which files to reference (it won't do this automatically)
 - **Context Management**: Use [CONTEXT RESET](PROMPTS.md#context-reset) prompt to maintain clarity
 - **Standards Evolution**: Update `CLAUDE.md` when discovering new patterns
 - **Code Understanding**: Never accept code you don't understand - question everything
@@ -191,7 +191,7 @@ Work on individual machines with separate Claude Code instances.
 #### Prompt Engineering
 
 - **Be Specific**: "Create a function that..." vs "Make something that works"
-- **Reference Standards**: Always point Claude to your `CLAUDE.md` file
+- **Reference Standards**: Always point the LLM to your `CLAUDE.md` file
 - **Iterate Deliberately**: Don't accept first solution - refine through questions
 - **Context Boundaries**: Reset context when switching major features
 
