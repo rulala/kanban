@@ -1,8 +1,8 @@
 # AI Code Review Guide
 
-You've just used Claude Code to generate a component for your Kanban board - perhaps a new task creation form. You've followed IQRE: **Iterated** on the requirements, **Questioned** Claude's approach, and now you've **Accepted** the generated code. But before committing to your repository, you need to **Review** it thoroughly.
+You've just used Claude Code or Codex to generate a component for your Kanban board - perhaps a new task creation form. You've followed IQRE: **Iterated** on the requirements, **Questioned** the LLM's approach, and now you've **Accepted** the generated code. But before committing to your repository, you need to **Review** it thoroughly.
 
-This is different from reviewing human-written code. AI confidently generates both brilliant solutions and subtle bugs with equal enthusiasm. Your job is to catch what Claude missed.
+This is different from reviewing human-written code. AI confidently generates both brilliant solutions and subtle bugs with equal enthusiasm. Your job is to catch what AI missed.
 
 ## The two-phase review process
 
@@ -12,10 +12,10 @@ This is different from reviewing human-written code. AI confidently generates bo
 
 1. **Test the happy path** - Create a task, move it between columns, edit it
 2. **Test edge cases** - What happens with empty inputs? Very long task names? Special characters?
-3. **Check unintended behaviour** - Does it do anything you didn't discuss with Claude?
+3. **Check unintended behaviour** - Does it do anything you didn't discuss?
 
 ```javascript
-// You asked for a simple task form, but Claude added:
+// You asked for a simple task form, but AI added:
 const handleSubmit = async (formData) => {
   // ✅ Expected: basic form submission
   await createTask(formData);
@@ -110,7 +110,7 @@ const [tasks, setTasks] = useState([]);
 Mixed approaches within the same codebase:
 
 ```javascript
-// 🚨 Claude used different patterns for similar functions
+// 🚨 The AI used different patterns for similar functions
 function addTask(task) {
   return { type: "ADD_TASK", payload: task }; // Redux pattern
 }
@@ -435,7 +435,7 @@ try {
 
 ### About the approach
 
-- "Why did Claude choose this library/pattern over alternatives?"
+- "Why did the LLM choose this library/pattern over alternatives?"
 - "Is this the simplest solution that could work?"
 - "Does this fit with our existing architecture?"
 
@@ -451,7 +451,7 @@ try {
 - "How easy would it be to modify this feature?"
 - "Are there any hidden dependencies or side effects?"
 
-## When to iterate back with Claude
+## When to iterate back with AI
 
 Return to the **Iterate/Question** phase when you find:
 
@@ -471,6 +471,6 @@ Before committing, ensure you can answer:
 - **What could go wrong?** (security and edge cases)
 - **How does it integrate?** (system-wide impact)
 
-Remember: Claude generated it, but **you're responsible for it**. If you can't confidently explain every line to a colleague, dig deeper or iterate with Claude until you can.
+Remember: AI generated it, but **you're responsible for it**. If you can't confidently explain every line to a colleague, dig deeper or iterate with the LLM until you can.
 
 The goal isn't perfect code - it's code you understand, trust, and can maintain. AI tools help you move faster, but thorough review ensures you don't sacrifice quality for speed.
