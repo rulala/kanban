@@ -14,26 +14,31 @@
     - [Environment & Tickets](#environment--tickets)
     - [Implementation](#implementation)
     - [Context Management](#context-management)
-    - [Presentation](#presentation)
+    - [Final Presentation](#final-presentation)
   - [Key Guidelines](#key-guidelines)
     - [AI Collaboration](#ai-collaboration)
     - [Team Coordination](#team-coordination)
     - [Quality Assurance](#quality-assurance)
     - [Success Criteria](#success-criteria-1)
+  - [Best Practices from Experience](#best-practices-from-experience)
 
 ## Workshop
 
 ### Overview
 
-In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
+In this workshop, you will work in human-AI pairs to build a Kanban board application using Claude Code or Codex as your AI partner. The focus is on practicing effective AI-assisted development, improving prompt hygiene, and fostering human oversight while collaborating with AI.
+
+**Key Feature**: Regular milestone presentations where teams share progress, code, and learnings with the entire group for collaborative review and feedback.
 
 ### What to Expect
 
 You will:
 
-- Collaborate with both human teammates and AI partners.
-- Develop a Kanban board application as a team.
-- Practice prompt refinement and iterative AI guidance.
+- Collaborate with both human teammates and AI partners
+- Develop a Kanban board application as a team
+- Practice prompt refinement and iterative AI guidance
+- Present progress at key milestones for group review and feedback
+- Learn from other teams' approaches and solutions
 
 ### Getting Started
 
@@ -49,11 +54,11 @@ Details of the task are contained in the [brief](BRIEF.md).
 
 Follow these four steps consistently throughout the workshop:
 
-1. **Iterate**: Share ideas/request code from AI and develop specifications or features through iteration.
-2. **Question**: Review AI proposal, identify gaps, and refine through follow-up questions.
-3. **Accept**: If AI proposal is acceptable, allow it to generate the code or specs.
-4. **Review/Create**: Understand generated code/specs. If inspired, create a new, enhanced solution based on AI's output.
-5. **Explain**: Present outputs to teammates, emphasising clear foundations and alignment.
+1. **Iterate**: Share ideas/request code from AI and develop specifications or features through iteration
+2. **Question**: Review AI proposal, identify gaps, and refine through follow-up questions
+3. **Accept**: If AI proposal is acceptable, allow it to generate the code or specs
+4. **Review/Create**: Understand generated code/specs. If inspired, create a new, enhanced solution based on AI's output
+5. **Explain**: Present outputs to teammates, emphasising clear foundations and alignment
 
 ---
 
@@ -67,10 +72,16 @@ Follow these four steps consistently throughout the workshop:
 - **Pair Formation**: Form teams (1 frontend + 1 backend developer)
 - **Repository Setup**: Following [Getting Started](#getting-started)
 - **Specification Development**:
-  - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase.
-  * Sitting on the same computer, you should initialise a new instance of Claude Code. Use the [GENERATE SPECS](PROMPTS.md#generate-specs) prompt to have a conversation with Claude and determine the specifications of your project. You should be discussing each answer with each other before sending it to Claude. This is a collaborative effort!
-  * Use [SPEC WRAP-UP](PROMPTS.md#spec-wrap-up) prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files.
-  * Push everything to your repo.
+  - Once you have completed [Getting Started](#getting-started), both developers should work together on one computer for the rest of the Conception phase
+  - Sitting on the same computer, you should initialise a new instance of Claude Code or Codex. Use the [GENERATE SPECS](PROMPTS.md#generate-specs) prompt to have a conversation with AI and determine the specifications of your project. You should be discussing each answer with each other before responding. This is a collaborative effort!
+  - Use [SPEC WRAP-UP](PROMPTS.md#spec-wrap-up) prompt - this should create `FUNCTIONAL.md`, `ARCHITECTURE.md`, and `CLAUDE.md` files
+  - Push everything to your repo
+
+**🎯 MILESTONE 1: Specification Review** (15 minutes)
+
+- Each team presents their architecture decisions and coding standards
+- Group discusses different approaches and trade-offs
+- Teams can refine specs based on feedback
 
 > **Output**: Initial documentation pushed to repo
 
@@ -86,42 +97,61 @@ Follow these four steps consistently throughout the workshop:
 
 - **Coordination**: Review tickets for dependencies and overlaps
 
+**🎯 MILESTONE 2: Ticket & Architecture Review** (10 minutes)
+
+- Teams share their ticket breakdown and implementation strategy
+- Group reviews project structures and identifies common patterns
+- Quick troubleshooting of any setup issues
+
 > **Output**: Ready-to-code environment with structured tickets
 
 #### IMPLEMENTATION
 
-Work on individual machines with separate Claude Code instances.
+Work on individual machines with separate Claude Code or Codex instances.
 
 **Per Ticket Process**:
 
 1. Use [KICKOFF/REFRESH MEMORY](PROMPTS.md#kickoff--refresh-memory) prompt
-2. Implement features
-3. Make sure to review constantly
+2. Implement features following IQRE methodology
+3. Review constantly - understand every line AI generates
 4. Use [CONTEXT RESET](PROMPTS.md#context-reset) after ticket completion
+5. Update `TICKETS.md` with completion status and any additional work done
+
+**🎯 MILESTONE 3: Mid-Implementation Review** (15 minutes)
+
+- Teams demo their current progress and working features
+- Review updated `TICKETS.md` to show progress and cross-dependencies resolved
+- Show examples of effective AI collaboration (prompts, iterations, code review)
+- Group code review: examine specific implementations and discuss alternatives
+- Share challenges and solutions discovered so far
 
 **Between Sessions**:
 
-- Coordinate dependencies with teammate
+- Coordinate dependencies with teammate using updated `TICKETS.md`
 - Update `CLAUDE.md` with learned standards
 
-> **Output**: Incremental feature completion with documented PRs
+> **Output**: Incremental feature completion with documented progress
 
 #### CONTEXT MANAGEMENT
 
 - Use `HISTORY\_[NAME].md` for context summaries
-- Reset Claude's context window after each ticket
+- Reset the LLM's context window after each ticket
+- Update `TICKETS.md` as living document after each completion
 - Maintain clean workspace
+- Document evolved best practices
 
-> **Output**: Archived context for reference, clean workspace
+> **Output**: Archived context for reference, updated ticket status, clean workspace
 
-#### PRESENTATION
+#### FINAL PRESENTATION
 
-- Demo Kanban board
-- Show AI collaboration examples
-- Present evolved standards
-- Reflect on deliberate architectural decisions
+**🎯 MILESTONE 4: Final Demo & Retrospective** (20 minutes)
 
-> **Output**: 5-minute presentation with examples and demo
+- Each team demos their complete Kanban board (5 minutes)
+- Show most effective AI collaboration examples (2 minutes)
+- Present evolved standards and architectural decisions (3 minutes)
+- Group retrospective: what worked, what didn't, key learnings
+
+> **Output**: Complete project with documented learnings
 
 ---
 
@@ -129,27 +159,62 @@ Work on individual machines with separate Claude Code instances.
 
 #### AI Collaboration
 
-- **Explicit Prompting**: Always tell Claude which files to reference (it won't do this automatically)
+- **Explicit Prompting**: Always tell the LLM which files to reference (it won't do this automatically)
 - **Context Management**: Use [CONTEXT RESET](PROMPTS.md#context-reset) prompt to maintain clarity
 - **Standards Evolution**: Update `CLAUDE.md` when discovering new patterns
+- **Code Understanding**: Never accept code you don't understand - question everything
 
 #### Team Coordination
 
-- **Sync Regularly**: During designated progress sessions
+- **Sync Regularly**: During designated milestone sessions
 - **Check Dependencies**: Use [DEPENDENCY CHECK](PROMPTS.md#dependency-check) prompt when unclear
 - **Share Learnings**: Document architectural decisions and standard updates
+- **Cross-Team Learning**: Pay attention to other teams' approaches during milestones
 
 #### Quality Assurance
 
 - **Follow IQRE**: Apply the four steps consistently
 - **Review Obsessively**: You need to know everything the AI is generating
 - **Maintain Standards**: Keep `CLAUDE.md` current and concise
+- **Question AI Decisions**: Challenge architectural and implementation choices
 
 #### Success Criteria
 
 - Functional Kanban board with task management
-- Effective AI collaboration patterns
+- Effective AI collaboration patterns demonstrated
 - Evolved standards documented in `CLAUDE.md`
-- Clear architectural decisions
+- Clear architectural decisions with rationale
+- Evidence of critical thinking about AI-generated code
 
-**Remember**: You're the human-in-the-loop. Guide the AI, don't just accept its output.
+### Best Practices from Experience
+
+#### Prompt Engineering
+
+- **Be Specific**: "Create a function that..." vs "Make something that works"
+- **Reference Standards**: Always point the LLM to your `CLAUDE.md` file
+- **Iterate Deliberately**: Don't accept first solution - refine through questions
+- **Context Boundaries**: Reset context when switching major features
+
+#### Code Review with AI
+
+- **Understand Before Accepting**: Ask AI to explain complex implementations
+- **Challenge Decisions**: "Why did you choose this pattern over X?"
+- **Test Edge Cases**: AI often misses boundary conditions
+- **Verify Against Requirements**: Does this actually solve the ticket?
+
+#### Team Collaboration
+
+- **Sync Early, Sync Often**: Don't let integration become a surprise
+- **Share Failures**: Failed prompts teach as much as successful ones
+- **Document Decisions**: Your future self will thank you
+- **Trust but Verify**: AI is powerful but not infallible
+
+#### Context Management
+
+- **Small Chunks**: One ticket per context window works best
+- **Clean Handoffs**: Use CONTEXT RESET religiously
+- **State Preservation**: `HISTORY_[NAME].md` is your lifeline
+- **Live Documentation**: Keep `TICKETS.md` updated after each completion
+- **Standards Evolution**: Update `CLAUDE.md` as you learn
+
+**Remember**: You're the human-in-the-loop. Guide the AI, don't just accept its output. Question everything, understand everything, own everything.

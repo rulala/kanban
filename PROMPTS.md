@@ -1,7 +1,7 @@
 # Prompts for Claude
 
 > [!IMPORTANT]  
-> There are plenty of placeholders throughout these prompts which need to be filled before use or if you direct Claude to this document you can indicate what those are. For instance, "Follow 'KICKOFF / REFRESH MEMORY' in `PROMPTS.md` - fill placeholders with `TICKET_NUMBER=2`, `NAME='Max'` and `PROMPT='Create data.json'`"
+> There are plenty of placeholders throughout these prompts which need to be filled before use.
 
 ## Conception
 
@@ -30,7 +30,7 @@ We should cover: language (ask this first), frameworks, libraries, package manag
 
 Do not wrap up until you have answers from me for each of these topics. There will be three outputs at the end: a functional spec, an architectural spec, and our code standards specification for `CLAUDE.md`, review the template for this file currently in the repo to understand what we must cover.
 
-**Important**: When asking questions about technical choices, present 2-3 specific options with brief explanations rather than leaving it open-ended. This speeds up decision-making. When there are more viable options available, verbalise this and ask if I want to see more options. Only one question at a time, stay within scope, and don't generate anything until requested.
+**Important**: When asking questions about technical choices, present 2-3 specific options (ranked from most relevant) with brief explanations rather than leaving it open-ended. This speeds up decision-making. When there are more viable options available, verbalise this and ask if I want to see more options. Only one question at a time, stay within scope, and don't generate anything until requested.
 ```
 
 ### SPEC WRAP-UP
@@ -76,8 +76,9 @@ Each ticket should include:
 - Dependencies (if any)
 - Assignee
 - Definition of done
+- Status tracking section (to be updated during implementation)
 
-**Important**: Order tickets by dependency, ensuring both developers can work efficiently and logically through the tickets in order, without blocking each other.
+**Important**: Order tickets by dependency, ensuring both developers can work efficiently and logically through the tickets in order, without blocking each other. Include a template for tracking completion, additional features added, and cross-ticket dependencies resolved.
 ```
 
 ## Implementation
@@ -95,21 +96,23 @@ During implementation, there are a number of prompts you can use at the start of
 ```markdown
 **First, review `CLAUDE.md` to understand our project standards and workflow.**
 
-Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building.
+Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building. Check current progress in `TICKETS.md`.
 
 We are working through `TICKETS.md` and are on ticket [TICKET_NUMBER] (I'm [NAME]).
 
 **Before implementing anything:**
 
 1. Confirm you understand the current ticket requirements
-2. Ask if you should reference any specific standards from `CLAUDE.md`
-3. Only implement what's specified in this ticket
+2. Check `TICKETS.md` for any dependencies or related work completed by other tickets
+3. Ask if you should reference any specific standards from `CLAUDE.md`
+4. Only implement what's specified in this ticket
 
 As you implement, explain:
 
 - How the code works and why it meets our `FUNCTIONAL.md` requirements
 - How it aligns with our `ARCHITECTURE.md`
 - Why it complies with our standards in `CLAUDE.md`
+- Any additional features or components you're implementing beyond the basic ticket requirements
 
 Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
 ```
@@ -123,14 +126,15 @@ Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
 > Use this prompt if ticket dependencies or scope is unclear or overlapping.
 
 ```markdown
-Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies. Then:
+Before starting this ticket [TICKET_NUMBER], check `TICKETS.md` for dependencies and current status. Then:
 
-1. Verify all prerequisite tickets are complete
+1. Verify all prerequisite tickets are complete by checking their status in `TICKETS.md`
 2. Confirm our implementation aligns with dependent tickets
 3. Check if any shared interfaces or data structures need coordination with your teammate
-4. Flag any potential conflicts with work in progress
+4. Look for any tickets that might have already addressed parts of this work
+5. Flag any potential conflicts with work in progress
 
-Only proceed when dependencies are satisfied and coordination is clear.
+Only proceed when dependencies are satisfied and coordination is clear. If you discover work has already been completed in other tickets, note this for the ticket update.
 ```
 
 ### CONTEXT RESET
@@ -141,14 +145,43 @@ Only proceed when dependencies are satisfied and coordination is clear.
 ```markdown
 Now we will reset the context window, before we do so:
 
-1. Create/update a `HISTORY_[NAME].md` file summarising our progress
-2. List completed tickets with key implementation details
-3. Note any important decisions or patterns established
-4. Mention any deviations from original specs and why
-5. Save current state of key variables/configurations
-6. If applicable, update `CLAUDE.md` with any learned standards picked up from the review process
-7. If there have been significant changes, update `FUNCTIONAL.md` or `ARCHITECTURE.md` as required
-8. **IMPORTANT**: Be concise, don't repeat yourself, double check and remove duplication/reduce where possible
+1. **Update `TICKETS.md`** for the ticket just completed:
 
-After creating/updating these files, I'll reset the context window and we'll continue with a fresh session.
+   - Mark ticket as ✅ COMPLETE
+   - Add any additional features/components implemented beyond original scope
+   - Note any tasks from other tickets that were completed during this work
+   - Update dependencies if this work enables other tickets to proceed
+   - Add any important implementation notes or decisions
+
+2. Create/update `HISTORY_[NAME].md` file summarising our progress:
+
+   - List completed tickets with key implementation details
+   - Note any important decisions or patterns established
+   - Mention any deviations from original specs and why
+   - Save current state of key variables/configurations
+
+3. If applicable, update `CLAUDE.md` with any learned standards picked up from the review process
+
+4. If there have been significant changes, update `FUNCTIONAL.md` or `ARCHITECTURE.md` as required
+
+5. **IMPORTANT**: Be concise, don't repeat yourself, double check and remove duplication/reduce where possible
+
+After updating these files, I'll reset the context window and we'll continue with a fresh session.
+```
+
+### TICKET STATUS UPDATE
+
+> [!NOTE]
+> Use this prompt if you need to update tickets without a full context reset, or to check cross-ticket impacts.
+
+```markdown
+Review the work I've just completed and update `TICKETS.md` accordingly:
+
+1. Mark the current ticket as complete with details of what was implemented
+2. Check if this work has resolved or partially completed any other tickets
+3. Update any tickets that can now proceed due to dependencies being resolved
+4. Note any additional features or components that were implemented
+5. Flag any new dependencies or blockers that have emerged
+
+Be specific about what was delivered beyond the original ticket scope, as this helps coordinate with the other developer.
 ```

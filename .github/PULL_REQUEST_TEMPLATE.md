@@ -8,14 +8,14 @@
 
 <!-- Summarise what you've done to address the ticket requirements -->
 
-## How I Worked with Claude
+## How I Worked with AI
 
-<!-- Explain your collaboration process with Claude -->
+<!-- Explain your collaboration process with AI -->
 
 - Initial prompts/ideas I shared
-- How I refined Claude's suggestions
+- How I refined the LLM's suggestions
 - Questions I asked to fill knowledge gaps
-- My own contributions beyond Claude's suggestions
+- My own contributions beyond AI's suggestions
 
 ## Code Understanding
 
