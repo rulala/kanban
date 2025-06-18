@@ -55,6 +55,10 @@ Now we will reset the context window, before we do so, in `docs/` folder:
 
 After updating these files, I'll reset the context window and we'll continue with a fresh session.
 
+---
+
+**NOTE FOR CLAUDE: Fill in the below**
+
 ## Tech Stack
 
 - Languages: [list primary languages]
