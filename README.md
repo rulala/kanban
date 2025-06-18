@@ -46,7 +46,7 @@ One developer on your team should create a new repository [using this repository
 
 ## Task
 
-Details of the task are contained in the [brief](BRIEF.md).
+Details of the task are contained in the [brief](docs/BRIEF.md).
 
 ## Human-AI Pair-Programming: A Rough Guide
 
