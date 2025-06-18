@@ -5,7 +5,14 @@ import type { KanbanTask, Board, TaskType } from '$lib/types'
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const { boardId } = params
 
-	// First, load the board to get its name
+	// Get current user
+	const { data: { user } } = await locals.supabase.auth.getUser()
+	
+	if (!user) {
+		throw error(401, 'Unauthorized')
+	}
+
+	// First, load the board (can't verify ownership without user_id column)
 	const { data: board, error: boardError } = await locals.supabase
 		.from('boards')
 		.select('*')
@@ -17,11 +24,12 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		throw error(404, 'Board not found')
 	}
 
-	// Load all tasks for this board
+	// Load all tasks for this board (only user's tasks)
 	const { data: tasks, error: tasksError } = await locals.supabase
 		.from('kanban')
 		.select('*')
 		.eq('board_id', boardId)
+		.eq('user_id', user.id)
 		.order('position', { ascending: true })
 		.order('created_at', { ascending: true })
 
@@ -47,12 +55,31 @@ export const actions: Actions = {
 			return fail(400, { error: 'Task description is required' })
 		}
 
+		// Get current user
+		const { data: { user } } = await locals.supabase.auth.getUser()
+		
+		if (!user) {
+			return fail(401, { error: 'You must be logged in to create tasks' })
+		}
+
+		// Verify board exists (can't check ownership without user_id column)
+		const { data: board } = await locals.supabase
+			.from('boards')
+			.select('id')
+			.eq('id', boardId)
+			.single()
+
+		if (!board) {
+			return fail(404, { error: 'Board not found' })
+		}
+
 		// Get the highest position in the column
 		const { data: existingTasks } = await locals.supabase
 			.from('kanban')
 			.select('position')
 			.eq('board_id', boardId)
 			.eq('type', type)
+			.eq('user_id', user.id)
 			.order('position', { ascending: false })
 			.limit(1)
 
@@ -66,7 +93,8 @@ export const actions: Actions = {
 				board_id: boardId,
 				description: description.trim(),
 				type,
-				position
+				position,
+				user_id: user.id
 			})
 
 		if (insertError) {
@@ -87,14 +115,23 @@ export const actions: Actions = {
 			return fail(400, { error: 'Task ID is required' })
 		}
 
+		// Get current user
+		const { data: { user } } = await locals.supabase.auth.getUser()
+		
+		if (!user) {
+			return fail(401, { error: 'You must be logged in to update tasks' })
+		}
+
 		const updates: any = {}
 		if (description !== null) updates.description = description.trim()
 		if (type !== null) updates.type = type
 
+		// Update only user's own tasks
 		const { error: updateError } = await locals.supabase
 			.from('kanban')
 			.update(updates)
 			.eq('id', taskId)
+			.eq('user_id', user.id)
 
 		if (updateError) {
 			console.error('Error updating task:', updateError)
@@ -112,10 +149,19 @@ export const actions: Actions = {
 			return fail(400, { error: 'Task ID is required' })
 		}
 
+		// Get current user
+		const { data: { user } } = await locals.supabase.auth.getUser()
+		
+		if (!user) {
+			return fail(401, { error: 'You must be logged in to delete tasks' })
+		}
+
+		// Delete only user's own tasks
 		const { error: deleteError } = await locals.supabase
 			.from('kanban')
 			.delete()
 			.eq('id', taskId)
+			.eq('user_id', user.id)
 
 		if (deleteError) {
 			console.error('Error deleting task:', deleteError)

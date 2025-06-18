@@ -3,7 +3,15 @@ import type { PageServerLoad, Actions } from './$types'
 import type { Board } from '$lib/types'
 
 export const load: PageServerLoad = async ({ locals }) => {
-	// Get all boards for this user
+	// Get current user to ensure they're authenticated
+	const { data: { user } } = await locals.supabase.auth.getUser()
+	
+	if (!user) {
+		return { boards: [] }
+	}
+
+	// Get all boards (we'll need to filter by user later when user_id column is added)
+	// For now, this will show all boards - SECURITY ISSUE
 	const { data: boards, error } = await locals.supabase
 		.from('boards')
 		.select('*')
@@ -16,6 +24,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		}
 	}
 
+	// TODO: Filter boards by user when user_id column is added to boards table
 	return {
 		boards: (boards as Board[]) || []
 	}
@@ -30,10 +39,19 @@ export const actions: Actions = {
 			return fail(400, { error: 'Board name is required' })
 		}
 
-		// Create the board
+		// Get current user
+		const { data: { user } } = await locals.supabase.auth.getUser()
+		
+		if (!user) {
+			return fail(401, { error: 'You must be logged in to create boards' })
+		}
+
+		// Create the board (without user_id since the table doesn't have this column)
 		const { data: board, error } = await locals.supabase
 			.from('boards')
-			.insert({ name: name.trim() })
+			.insert({ 
+				name: name.trim()
+			})
 			.select()
 			.single()
 
