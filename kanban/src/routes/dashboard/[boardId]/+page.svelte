@@ -188,6 +188,92 @@
 			showNotification('error', 'Unable to connect to server. Please check your connection and try again.')
 		}
 	}
+
+	// Drag and drop functionality
+	let draggedTask: KanbanTask | null = null
+	let dragOverColumn: TaskType | null = null
+
+	function handleDragStart(event: DragEvent, task: KanbanTask) {
+		if (!event.dataTransfer) return
+		draggedTask = task
+		event.dataTransfer.effectAllowed = 'move'
+		event.dataTransfer.setData('text/plain', task.id)
+		// Add visual feedback
+		if (event.target instanceof HTMLElement) {
+			event.target.style.opacity = '0.5'
+		}
+	}
+
+	function handleDragEnd(event: DragEvent) {
+		draggedTask = null
+		dragOverColumn = null
+		// Reset visual feedback
+		if (event.target instanceof HTMLElement) {
+			event.target.style.opacity = '1'
+		}
+	}
+
+	function handleDragOver(event: DragEvent) {
+		event.preventDefault()
+		if (event.dataTransfer) {
+			event.dataTransfer.dropEffect = 'move'
+		}
+	}
+
+	function handleDragEnter(event: DragEvent, columnType: TaskType) {
+		event.preventDefault()
+		dragOverColumn = columnType
+	}
+
+	function handleDragLeave(event: DragEvent) {
+		// Only reset if we're leaving the column entirely
+		if (event.currentTarget === event.target) {
+			dragOverColumn = null
+		}
+	}
+
+	async function handleDrop(event: DragEvent, targetColumnType: TaskType) {
+		event.preventDefault()
+		dragOverColumn = null
+
+		if (!draggedTask || draggedTask.type === targetColumnType) {
+			return // No task to move or already in correct column
+		}
+
+		// Store original for rollback
+		const originalTask = { ...draggedTask }
+		const originalTasks = [...tasks]
+
+		// Optimistic update - move task to new column
+		tasks = tasks.map(t => 
+			t.id === draggedTask.id 
+				? { ...t, type: targetColumnType }
+				: t
+		)
+
+		try {
+			const formData = new FormData()
+			formData.append('taskId', draggedTask.id)
+			formData.append('type', targetColumnType)
+
+			const response = await fetch('?/updateTask', {
+				method: 'POST',
+				body: formData
+			})
+
+			if (!response.ok) {
+				throw new Error('Server error')
+			}
+
+			// Success - refresh data
+			await invalidateAll()
+			showNotification('success', 'Task moved successfully')
+		} catch (error) {
+			// Network or server error - rollback
+			tasks = originalTasks
+			showNotification('error', 'Unable to move task. Please check your connection and try again.')
+		}
+	}
 </script>
 
 <div class="flex flex-col h-full">
@@ -212,7 +298,13 @@
 	<!-- Kanban Columns -->
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
 		{#each columns as column}
-			<div class="bg-base-200 rounded-lg p-4">
+			<div 
+				class="bg-base-200 rounded-lg p-4 {dragOverColumn === column.type ? 'ring-2 ring-primary ring-opacity-50' : ''}"
+				on:dragover={handleDragOver}
+				on:dragenter={(e) => handleDragEnter(e, column.type)}
+				on:dragleave={handleDragLeave}
+				on:drop={(e) => handleDrop(e, column.type)}
+			>
 				<!-- Column Header -->
 				<div class="flex items-center justify-between mb-4">
 					<h2 class="font-semibold text-lg">{column.title}</h2>
@@ -220,7 +312,7 @@
 				</div>
 
 				<!-- Column Content -->
-				<div class="space-y-2">
+				<div class="space-y-2 min-h-[200px]">
 					{#if column.tasks.length === 0}
 						<div class="text-center py-8 text-base-content/50">
 							<p>No tasks yet</p>
@@ -228,7 +320,12 @@
 						</div>
 					{:else}
 						{#each column.tasks as task (task.id)}
-							<div class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
+							<div 
+								class="card bg-base-100 shadow-sm hover:shadow-md transition-shadow cursor-move"
+								draggable="true"
+								on:dragstart={(e) => handleDragStart(e, task)}
+								on:dragend={handleDragEnd}
+							>
 								<div class="card-body p-4">
 									{#if editingTask === task.id}
 										<!-- Edit Mode -->
