@@ -10,11 +10,11 @@ export const load: PageServerLoad = async ({ locals }) => {
 		return { boards: [] }
 	}
 
-	// Get all boards (we'll need to filter by user later when user_id column is added)
-	// For now, this will show all boards - SECURITY ISSUE
+	// Get only boards that belong to the current user
 	const { data: boards, error } = await locals.supabase
 		.from('boards')
 		.select('*')
+		.eq('user_id', user.id)
 		.order('created_at', { ascending: false })
 
 	if (error) {
@@ -24,7 +24,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 		}
 	}
 
-	// TODO: Filter boards by user when user_id column is added to boards table
 	return {
 		boards: (boards as Board[]) || []
 	}
@@ -39,14 +38,14 @@ export const actions: Actions = {
 			return fail(400, { error: 'Board name is required' })
 		}
 
-		// Get current user
+		// Get current user to ensure they're authenticated
 		const { data: { user } } = await locals.supabase.auth.getUser()
 		
 		if (!user) {
 			return fail(401, { error: 'You must be logged in to create boards' })
 		}
 
-		// Create the board (without user_id since the table doesn't have this column)
+		// Create the board (user_id is automatically set to auth.uid() by database)
 		const { data: board, error } = await locals.supabase
 			.from('boards')
 			.insert({ 

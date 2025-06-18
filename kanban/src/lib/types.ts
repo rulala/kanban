@@ -14,7 +14,7 @@ export interface Board {
 	id: string
 	name: string
 	created_at: string
-	user_id?: string // Optional until column is added to database
+	user_id: string // Required for security
 }
 
 export interface BoardWithTasks extends Board {

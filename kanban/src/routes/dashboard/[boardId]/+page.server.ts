@@ -12,16 +12,17 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		throw error(401, 'Unauthorized')
 	}
 
-	// First, load the board (can't verify ownership without user_id column)
+	// First, load the board and verify ownership
 	const { data: board, error: boardError } = await locals.supabase
 		.from('boards')
 		.select('*')
 		.eq('id', boardId)
+		.eq('user_id', user.id)
 		.single()
 
 	if (boardError || !board) {
 		console.error('Error loading board:', JSON.stringify(boardError, null, 2))
-		throw error(404, 'Board not found')
+		throw error(404, 'Board not found or access denied')
 	}
 
 	// Load all tasks for this board (only user's tasks)
@@ -62,15 +63,16 @@ export const actions: Actions = {
 			return fail(401, { error: 'You must be logged in to create tasks' })
 		}
 
-		// Verify board exists (can't check ownership without user_id column)
+		// Verify board ownership
 		const { data: board } = await locals.supabase
 			.from('boards')
 			.select('id')
 			.eq('id', boardId)
+			.eq('user_id', user.id)
 			.single()
 
 		if (!board) {
-			return fail(404, { error: 'Board not found' })
+			return fail(403, { error: 'You do not have permission to add tasks to this board' })
 		}
 
 		// Get the highest position in the column
