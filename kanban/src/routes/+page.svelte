@@ -73,7 +73,7 @@
 
   <!-- DaisyUI test -->
   <!-- Open the modal using ID.showModal() method -->
-  <button class="btn" onclick={(): void => document.getElementById('my_modal_1').showModal()}> open modal</button>
+  <button class="btn" onclick={() => document.getElementById('my_modal_1').showModal()}> open modal</button>
   <dialog id="my_modal_1" class="modal">
     <div class="modal-box">
       <h3 class="text-lg font-bold">Hello!</h3>
