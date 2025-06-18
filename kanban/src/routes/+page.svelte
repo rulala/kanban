@@ -22,7 +22,7 @@
         <div class="stat-title">SvelteKit</div>
         <div class="stat-value text-primary">✓ Ready</div>
       </div>
-      
+
       <div class="stat">
         <div class="stat-figure text-secondary">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
@@ -32,7 +32,7 @@
         <div class="stat-title">Tailwind CSS</div>
         <div class="stat-value text-secondary">✓ Ready</div>
       </div>
-      
+
       <div class="stat">
         <div class="stat-figure text-accent">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
@@ -70,4 +70,20 @@
       <div class="badge badge-accent">Accent</div>
     </div>
   </div>
+
+  <!-- DaisyUI test -->
+  <!-- Open the modal using ID.showModal() method -->
+  <button class="btn" onclick={(): void => document.getElementById('my_modal_1').showModal()}> open modal</button>
+  <dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Hello!</h3>
+      <p class="py-4">Press ESC key or click the button below to close</p>
+      <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </div>
