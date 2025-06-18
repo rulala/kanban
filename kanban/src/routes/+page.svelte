@@ -19,7 +19,7 @@
 						</div>
 						<ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 							<li>
-								<form method="POST" action="/auth/logout">
+								<form method="POST" action="?/logout">
 									<button type="submit" class="w-full text-left">Logout</button>
 								</form>
 							</li>
@@ -92,7 +92,7 @@
 				{/if}
 				<div class="card-actions justify-end">
 					{#if data.user}
-						<form method="POST" action="/auth/logout">
+						<form method="POST" action="?/logout">
 							<button type="submit" class="btn btn-ghost">Logout</button>
 						</form>
 						<button class="btn btn-primary">Go to Board</button>

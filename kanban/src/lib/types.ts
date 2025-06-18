@@ -1,19 +1,22 @@
-// Task type matching the database schema
-export interface Task {
-  id: string
-  title: string
-  description?: string
-  status: 'todo' | 'doing' | 'done'
-  user_id: string
-  created_at: string
-  updated_at: string
+export type TaskType = 'todo' | 'doing' | 'done'
+
+export interface KanbanTask {
+	id: string
+	user_id: string
+	description: string
+	type: TaskType
+	board_id: string
+	position: number // Default 0 (top of column)
+	created_at: string
 }
 
-// Task status type for reuse
-export type TaskStatus = Task['status']
+export interface Board {
+	id: string
+	name: string
+	user_id: string
+	created_at: string
+}
 
-// Form action response types
-export interface ActionResponse {
-  success: boolean
-  error?: string
+export interface BoardWithTasks extends Board {
+	tasks: KanbanTask[]
 }
