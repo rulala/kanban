@@ -29,13 +29,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	})
 }
-
-// Disable CSRF protection for now to get it working quickly
-import { sequence } from '@sveltejs/kit/hooks'
-
-export const handleFetch = sequence(async ({ event, request, fetch }) => {
-	if (request.method === 'POST') {
-		request.headers.delete('origin')
-	}
-	return fetch(request)
-})
