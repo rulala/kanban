@@ -2,9 +2,14 @@
 	import type { PageData, ActionData } from './$types'
 	import type { KanbanTask, TaskType } from '$lib/types'
 	import { enhance } from '$app/forms'
+	import { invalidateAll } from '$app/navigation'
 
 	export let data: PageData
 	export let form: ActionData
+
+	// Local state for optimistic updates
+	let tasks = [...data.tasks]
+	let notification: { type: 'error' | 'success'; message: string } | null = null
 
 	// State for forms
 	let showCreateForm: Record<TaskType, boolean> = {
@@ -15,10 +20,13 @@
 	let editingTask: string | null = null
 	let deletingTask: string | null = null
 
+	// Update local tasks when data changes
+	$: tasks = [...data.tasks]
+
 	// Group tasks by type
-	$: todoTasks = data.tasks.filter(task => task.type === 'todo')
-	$: doingTasks = data.tasks.filter(task => task.type === 'doing')
-	$: doneTasks = data.tasks.filter(task => task.type === 'done')
+	$: todoTasks = tasks.filter(task => task.type === 'todo')
+	$: doingTasks = tasks.filter(task => task.type === 'doing')
+	$: doneTasks = tasks.filter(task => task.type === 'done')
 
 	// Column configuration
 	$: columns = [
@@ -48,9 +56,150 @@
 	function cancelDelete() {
 		deletingTask = null
 	}
+
+	function showNotification(type: 'error' | 'success', message: string) {
+		notification = { type, message }
+		setTimeout(() => {
+			notification = null
+		}, 5000)
+	}
+
+	function generateTempId() {
+		return `temp-${Date.now()}-${Math.random()}`
+	}
+
+	async function handleCreateTask(event: Event, type: TaskType) {
+		event.preventDefault()
+		const form = event.target as HTMLFormElement
+		const formData = new FormData(form)
+		const description = formData.get('description') as string
+
+		// Optimistic update
+		const tempTask: KanbanTask = {
+			id: generateTempId(),
+			description,
+			type,
+			board_id: data.board.id,
+			user_id: '',
+			position: 0,
+			created_at: new Date().toISOString()
+		}
+
+		tasks = [...tasks, tempTask]
+		showCreateForm[type] = false
+
+		try {
+			const response = await fetch(form.action, {
+				method: 'POST',
+				body: formData
+			})
+
+			if (!response.ok) {
+				throw new Error('Server error')
+			}
+
+			// Success - refresh data
+			await invalidateAll()
+			showNotification('success', 'Task created successfully')
+			form.reset()
+		} catch (error) {
+			// Network or server error - rollback
+			tasks = tasks.filter(t => t.id !== tempTask.id)
+			showCreateForm[type] = true
+			showNotification('error', 'Unable to connect to server. Please check your connection and try again.')
+		}
+	}
+
+	async function handleUpdateTask(event: Event, taskId: string) {
+		event.preventDefault()
+		const form = event.target as HTMLFormElement
+		const formData = new FormData(form)
+		const newDescription = formData.get('description') as string
+
+		// Store original for rollback
+		const originalTask = tasks.find(t => t.id === taskId)
+
+		// Optimistic update
+		tasks = tasks.map(t => 
+			t.id === taskId 
+				? { ...t, description: newDescription }
+				: t
+		)
+		cancelEdit()
+
+		try {
+			const response = await fetch(form.action, {
+				method: 'POST',
+				body: formData
+			})
+
+			if (!response.ok) {
+				throw new Error('Server error')
+			}
+
+			// Success - refresh data
+			await invalidateAll()
+			showNotification('success', 'Task updated successfully')
+		} catch (error) {
+			// Network or server error - rollback
+			if (originalTask) {
+				tasks = tasks.map(t => 
+					t.id === taskId ? originalTask : t
+				)
+			}
+			showNotification('error', 'Unable to connect to server. Please check your connection and try again.')
+		}
+	}
+
+	async function handleDeleteTask(event: Event, taskId: string) {
+		event.preventDefault()
+		const form = event.target as HTMLFormElement
+
+		// Store task for rollback
+		const deletedTask = tasks.find(t => t.id === taskId)
+		const deletedIndex = tasks.findIndex(t => t.id === taskId)
+
+		// Optimistic delete
+		tasks = tasks.filter(t => t.id !== taskId)
+		cancelDelete()
+
+		try {
+			const response = await fetch(form.action, {
+				method: 'POST',
+				body: new FormData(form)
+			})
+
+			if (!response.ok) {
+				throw new Error('Server error')
+			}
+
+			// Success - refresh data
+			await invalidateAll()
+			showNotification('success', 'Task deleted successfully')
+		} catch (error) {
+			// Network or server error - rollback
+			if (deletedTask && deletedIndex !== -1) {
+				tasks = [
+					...tasks.slice(0, deletedIndex),
+					deletedTask,
+					...tasks.slice(deletedIndex)
+				]
+			}
+			showNotification('error', 'Unable to connect to server. Please check your connection and try again.')
+		}
+	}
 </script>
 
 <div class="flex flex-col h-full">
+	<!-- Notification Toast -->
+	{#if notification}
+		<div class="toast toast-top toast-end z-50">
+			<div class="alert alert-{notification.type === 'error' ? 'error' : 'success'}">
+				<span>{notification.message}</span>
+			</div>
+		</div>
+	{/if}
+
 	<!-- Board Header -->
 	<div class="flex items-center justify-between mb-6">
 		<div>
@@ -59,13 +208,6 @@
 		</div>
 		<a href="/dashboard" class="btn btn-ghost">← Back to Boards</a>
 	</div>
-
-	<!-- Error Display -->
-	{#if form?.error}
-		<div class="alert alert-error mb-4">
-			<span>{form.error}</span>
-		</div>
-	{/if}
 
 	<!-- Kanban Columns -->
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1">
@@ -90,7 +232,12 @@
 								<div class="card-body p-4">
 									{#if editingTask === task.id}
 										<!-- Edit Mode -->
-										<form method="POST" action="?/updateTask" use:enhance class="space-y-2">
+										<form 
+											method="POST" 
+											action="?/updateTask"
+											on:submit|preventDefault={(e) => handleUpdateTask(e, task.id)}
+											class="space-y-2"
+										>
 											<input type="hidden" name="taskId" value={task.id} />
 											<textarea
 												name="description"
@@ -110,7 +257,12 @@
 										<div class="space-y-2">
 											<p class="text-sm font-semibold">Delete this task?</p>
 											<p class="text-sm">{task.description}</p>
-											<form method="POST" action="?/deleteTask" use:enhance class="flex gap-2">
+											<form 
+												method="POST" 
+												action="?/deleteTask"
+												on:submit|preventDefault={(e) => handleDeleteTask(e, task.id)}
+												class="flex gap-2"
+											>
 												<input type="hidden" name="taskId" value={task.id} />
 												<button type="submit" class="btn btn-sm btn-error">Delete</button>
 												<button type="button" class="btn btn-sm btn-ghost" on:click={cancelDelete}>
@@ -148,7 +300,12 @@
 
 					<!-- Add Task Form/Button -->
 					{#if showCreateForm[column.type]}
-						<form method="POST" action="?/createTask" use:enhance class="card bg-base-100 shadow-sm">
+						<form 
+							method="POST" 
+							action="?/createTask"
+							on:submit|preventDefault={(e) => handleCreateTask(e, column.type)}
+							class="card bg-base-100 shadow-sm"
+						>
 							<div class="card-body p-4 space-y-2">
 								<input type="hidden" name="type" value={column.type} />
 								<textarea
