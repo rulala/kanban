@@ -1,11 +1,15 @@
 import { createClient } from '@supabase/supabase-js'
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
-import type { Database } from './database.types'
 
 // Create a single supabase client for interacting with your database
-export const supabase = createClient<Database>(
+export const supabase = createClient(
   PUBLIC_SUPABASE_URL,
-  PUBLIC_SUPABASE_ANON_KEY
+  PUBLIC_SUPABASE_ANON_KEY,
+  {
+    auth: {
+      persistSession: false
+    }
+  }
 )
 
 // Note: For server-side auth in SvelteKit, we'll create server-specific clients

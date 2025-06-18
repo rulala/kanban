@@ -5,7 +5,7 @@ export interface KanbanTask {
 	user_id: string
 	description: string
 	type: TaskType
-	board_id: string
+	board_id: string // Foreign key to boards.id
 	position: number // Default 0 (top of column)
 	created_at: string
 }
@@ -13,8 +13,8 @@ export interface KanbanTask {
 export interface Board {
 	id: string
 	name: string
-	user_id: string
 	created_at: string
+	user_id?: string // If you have this field
 }
 
 export interface BoardWithTasks extends Board {

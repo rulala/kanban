@@ -13,6 +13,15 @@ export function createSupabaseServerClient(cookies: Cookies) {
 					cookies.set(name, value, { ...options, path: '/' })
 				})
 			}
+		},
+		auth: {
+			debug: false,
+			detectSessionInUrl: false
+		},
+		global: {
+			headers: {
+				'x-supabase-auth-warning': 'ignore'
+			}
 		}
 	})
 }

@@ -3,13 +3,10 @@
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
 	import { supabase } from '$lib/supabase'
-	import type { LayoutData } from './$types'
-
-	export let data: LayoutData
 
 	onMount(() => {
-		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-			if (session?.expires_at !== data.session?.expires_at) {
+		const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+			if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'TOKEN_REFRESHED') {
 				invalidate('supabase:auth')
 			}
 		})
