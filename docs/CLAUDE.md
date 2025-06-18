@@ -6,6 +6,55 @@
 
 A brief description of the project, its purpose, and key goals.
 
+## Context Management
+
+### Context refresh
+
+Refresh your memory by checking in `docs/` folder. Then review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building. Check current progress in `TICKETS.md`.
+
+Check what the next ticket that needs implementing.
+
+**Before implementing anything:**
+
+1. Confirm you understand the current ticket requirements
+2. Check `TICKETS.md` for any dependencies or related work completed by other tickets
+3. Ask if you should reference any specific standards from `CLAUDE.md`
+4. Only implement what's specified in this ticket
+
+As you implement, explain:
+
+- How the code works and why it meets our `FUNCTIONAL.md` requirements
+- How it aligns with our `ARCHITECTURE.md`
+- Why it complies with our standards in `CLAUDE.md`
+- Any additional features or components you're implementing beyond the basic ticket requirements
+
+### Context reset
+
+Now we will reset the context window, before we do so, in `docs/` folder:
+
+1. **Update `TICKETS.md`** for the ticket just completed:
+
+   - Mark ticket as ✅ COMPLETE
+   - Add any additional features/components implemented beyond original scope
+   - Note any tasks from other tickets that were completed during this work
+   - Update dependencies if this work enables other tickets to proceed
+   - Add any important implementation notes or decisions
+
+2. Create/update `HISTORY_[NAME].md` file summarising our progress:
+
+   - List completed tickets with key implementation details
+   - Note any important decisions or patterns established
+   - Mention any deviations from original specs and why
+   - Save current state of key variables/configurations
+
+3. If applicable, update `CLAUDE.md` with any learned standards picked up from the review process
+
+4. If there have been significant changes, update `FUNCTIONAL.md` or `ARCHITECTURE.md` as required
+
+5. **IMPORTANT**: Be concise, don't repeat yourself, double check and remove duplication/reduce where possible
+
+After updating these files, I'll reset the context window and we'll continue with a fresh session.
+
 ## Tech Stack
 
 - Languages: [list primary languages]

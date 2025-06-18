@@ -134,7 +134,6 @@ Work on individual machines with separate Claude Code or Codex instances.
 
 #### CONTEXT MANAGEMENT
 
-- Use `HISTORY\_[NAME].md` for context summaries
 - Reset the LLM's context window after each ticket
 - Update `TICKETS.md` as living document after each completion
 - Maintain clean workspace
@@ -213,7 +212,7 @@ Work on individual machines with separate Claude Code or Codex instances.
 
 - **Small Chunks**: One ticket per context window works best
 - **Clean Handoffs**: Use CONTEXT RESET religiously
-- **State Preservation**: `HISTORY_[NAME].md` is your lifeline
+- **State Preservation**: `TICKETS.md` is your lifeline
 - **Live Documentation**: Keep `TICKETS.md` updated after each completion
 - **Standards Evolution**: Update `CLAUDE.md` as you learn
 

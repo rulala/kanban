@@ -22,7 +22,7 @@ These are the prompts you can use to do so:
 > Resist the urge of being too ambitious here, remember you must finish building this and fully understand, be able to explain it by the end of the day. This is _just_ a simple kanban board. The aim is simply to make sure it is built the way you want/dictate.
 
 ```markdown
-We're going to discuss the specification for a software project. I am working in team of 2 people, each pair-programming with an AI (we each have the workshop repo cloned to our machines, and each have an instance of Claude Code running inside that repo) in the context of an AI-assisted development workshop. The project details are contained in `BRIEF.md` and workshop details are in `README.md`.
+We're going to discuss the specification for a software project. I am working in team of 2 people, each pair-programming with an AI (we each have the workshop repo cloned to our machines, and each have an instance of Claude Code / Codex running inside that repo) in the context of an AI-assisted development workshop. The project details are contained in the `docs/` folder: `BRIEF.md` and workshop details are in `README.md`.
 
 Ask me one question at a time so we can develop thorough, step-by-step specs. Each question should build on my previous answers, and our end goal is to have a detailed specification I can hand off to a developer. This will be built in only a few hours so try and keep the conversation short, apply KISS principles and use logical inference based on previous answers when possible.
 
@@ -36,7 +36,7 @@ Do not wrap up until you have answers from me for each of these topics. There wi
 ### SPEC WRAP-UP
 
 ```markdown
-Now that we've wrapped up the brainstorming process, compile our findings into three comprehensive, developer-ready specifications:
+Now that we've wrapped up the brainstorming process, compile our findings into three comprehensive, developer-ready specifications in the `docs/` folder:
 
 1. **FUNCTIONAL.md** - Complete functional requirements
 2. **ARCHITECTURE.md** - Detailed project architecture
@@ -53,7 +53,7 @@ Make each specification modular and cross-referenced so developers can quickly f
 > This prompt contains placeholders `DEV1_NAME` and `DEV2_NAME` to be filled in.
 
 ```markdown
-Review `CLAUDE.md` first to understand our standards. Then review `FUNCTIONAL.md` and `ARCHITECTURE.md` to understand what we're building.
+In the `docs/` folder, review `CLAUDE.md` first to understand our standards. Then review `FUNCTIONAL.md` and `ARCHITECTURE.md` to understand what we're building.
 
 Break the project down into manageable, atomic tickets that:
 
@@ -88,38 +88,20 @@ During implementation, there are a number of prompts you can use at the start of
 ### KICKOFF / REFRESH MEMORY
 
 > [!IMPORTANT]  
-> This prompt contains placeholders `NAME`, and `TICKET_NUMBER` to be filled in. At the end of the below text, you should add your instructions to the LLM to complete the prompt (this can often be taken from the ticket you are working on). Remove the sentence asking to check `HISTORY_[NAME].md` on first ticket as this will be the first code interaction.
+> This prompt contains placeholders `NAME` to be filled in.
 
 > [!NOTE]
 > Always clear context window before using this prompt.
 
 ```markdown
-**First, review `CLAUDE.md` to understand our project standards and workflow.**
+**First, review documentation in `docs/`.**
 
-Then refresh your memory by checking `HISTORY_[NAME].md`. Review the `ARCHITECTURE.md` and `FUNCTIONAL.md` to understand what we are building. Check current progress in `TICKETS.md`.
-
-We are working through `TICKETS.md` and are on ticket [TICKET_NUMBER] (I'm [NAME]).
-
-**Before implementing anything:**
-
-1. Confirm you understand the current ticket requirements
-2. Check `TICKETS.md` for any dependencies or related work completed by other tickets
-3. Ask if you should reference any specific standards from `CLAUDE.md`
-4. Only implement what's specified in this ticket
-
-As you implement, explain:
-
-- How the code works and why it meets our `FUNCTIONAL.md` requirements
-- How it aligns with our `ARCHITECTURE.md`
-- Why it complies with our standards in `CLAUDE.md`
-- Any additional features or components you're implementing beyond the basic ticket requirements
-
-Now, [THIS IS WHERE YOU CAN TYPE YOUR PROMPT...]
+Follow instructions to '### Context refresh' in `CLAUDE.md`, I'm [NAME].
 ```
 
 ### DEPENDENCY CHECK
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This prompt contains variable `TICKET_NUMBER` to be filled in.
 
 > [!NOTE]
@@ -143,30 +125,7 @@ Only proceed when dependencies are satisfied and coordination is clear. If you d
 > You must use this prompt after each ticket.
 
 ```markdown
-Now we will reset the context window, before we do so:
-
-1. **Update `TICKETS.md`** for the ticket just completed:
-
-   - Mark ticket as ✅ COMPLETE
-   - Add any additional features/components implemented beyond original scope
-   - Note any tasks from other tickets that were completed during this work
-   - Update dependencies if this work enables other tickets to proceed
-   - Add any important implementation notes or decisions
-
-2. Create/update `HISTORY_[NAME].md` file summarising our progress:
-
-   - List completed tickets with key implementation details
-   - Note any important decisions or patterns established
-   - Mention any deviations from original specs and why
-   - Save current state of key variables/configurations
-
-3. If applicable, update `CLAUDE.md` with any learned standards picked up from the review process
-
-4. If there have been significant changes, update `FUNCTIONAL.md` or `ARCHITECTURE.md` as required
-
-5. **IMPORTANT**: Be concise, don't repeat yourself, double check and remove duplication/reduce where possible
-
-After updating these files, I'll reset the context window and we'll continue with a fresh session.
+Follow instructions to '### Context reset' in `docs/CLAUDE.md`
 ```
 
 ### TICKET STATUS UPDATE
